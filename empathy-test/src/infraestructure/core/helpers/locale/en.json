@@ -1,1 +1,10 @@
-{ "general.search": "Search" }
+{
+  "general.search": "Search",
+  "general.show-more": "Show more",
+  "general.show-less": "Show less",
+
+  "history.delete-all": "Delete history",
+  "history.title": "Search history",
+
+  "sugestions.title": "Sugestions"
+}

@@ -1,1 +1,10 @@
-{ "general.search": "Buscar" }
+{
+  "general.search": "Buscar",
+  "general.show-more": "Ver mas",
+  "general.show-less": "Ver menos",
+
+  "history.delete-all": "Borrar historial",
+  "history.title": "Historial de busqueda",
+
+  "sugestions.title": "Sugerencias"
+}
