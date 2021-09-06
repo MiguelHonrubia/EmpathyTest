@@ -1,0 +1,11 @@
+# Ignore files and folders
+/webpack.config.js
+node_modules
+config
+coverage
+build
+*.css
+*.svg
+*.json
+lib
+contexts
