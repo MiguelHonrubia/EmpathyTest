@@ -1,4 +1,5 @@
 import * as React from "react";
+import { HistoryList } from "../components/historyList/HistoryList";
 import { SearchComponent } from "../components/SearchComponent/SearchComponent";
 
 const Index: React.FC = () => {
@@ -19,7 +20,7 @@ const Index: React.FC = () => {
           height: "15rem",
           backgroundColor: "gray",
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
         }}
       >
         <SearchComponent
@@ -28,6 +29,12 @@ const Index: React.FC = () => {
           onSubmit={onSubmitSearch}
           loading={loading}
         ></SearchComponent>
+      </div>
+      <div style={{ display: "flex", width: "100%" }}>
+        <div style={{ width: "50%" }}>
+          <HistoryList></HistoryList>
+        </div>
+        <div style={{ width: "50%" }}></div>
       </div>
     </>
   );
