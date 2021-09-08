@@ -41,10 +41,13 @@ export default class Api {
       credentials: "same-origin",
       ...options.defaultOptions,
     };
+
+    const auth = btoa(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`);
+
     this.defaultOptions.headers = {
-      Authorization: "Bearer ",
+      Authorization: `Basic ${auth}`,
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
       ...options.defaultOptions.headers,
     };
   }
@@ -121,7 +124,7 @@ export default class Api {
     const opt = { ...deepCopy(this.defaultOptions), ...options, method };
     opt.headers = { ...this.defaultOptions.headers, ...options.headers };
     try {
-      const accessToken = window.sessionStorage.getItem(STORAGE_TOKEN_KEY);
+      const accessToken = window.localStorage.getItem(STORAGE_TOKEN_KEY);
 
       if (options && options.body instanceof FormData) {
         delete opt.headers["Content-Type"];
@@ -143,12 +146,7 @@ export default class Api {
       }
 
       return this.fetch(this.baseUrl + path, opt);
-    } catch (error) {
-      // eslint-disable-next-line no-empty
-      if (error.errorMessage.indexOf("interaction_required") !== -1) {
-        //empty
-      }
-    }
+    } catch (error) {}
   }
 
   get(path: string, pagination?: PaginationType, options: RequestInit = {}) {

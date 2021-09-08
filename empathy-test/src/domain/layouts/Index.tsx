@@ -1,5 +1,10 @@
 import * as React from "react";
+import { useHistory } from "react-router";
 import { HistoryType } from "../../infraestructure/core/models/History";
+import { fetchAccessToken } from "../../infraestructure/data/providers/auth";
+import { fetchSearch } from "../../infraestructure/data/providers/spotify";
+import { Carrousel } from "../components/carrousel/Carrousel";
+import { CoolBox } from "../components/coolBox/CoolBox";
 import { HistoryList } from "../components/historyList/HistoryList";
 import { SearchComponent } from "../components/SearchComponent/SearchComponent";
 import { SugestionComponent } from "../components/sugestion/SugestionComponent";
@@ -17,6 +22,7 @@ function json2array(json) {
 const Index: React.FC = () => {
   const [searchValue, setSearchValue] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const historyBrowser = useHistory();
 
   const array: HistoryType[] = [
     {
@@ -139,20 +145,6 @@ const Index: React.FC = () => {
       : []
   );
 
-  console.log("history", history);
-
-  const addHistoryLine = async () => {
-    const newHistoryItem: HistoryType = {
-      search: searchValue,
-      date: new Date().toLocaleDateString(),
-      artistResults: 0,
-      albumResults: 0,
-      songResults: 0,
-    };
-    history.push(newHistoryItem);
-    await updateSessionHistory();
-  };
-
   const updateSessionHistory = async () => {
     sessionStorage.setItem(
       "history",
@@ -162,13 +154,7 @@ const Index: React.FC = () => {
 
   const onSubmitSearch = async (event) => {
     try {
-      event.preventDefault();
-      setLoading(true);
-      console.log("values", searchValue);
-
-      //todo: spotify request
-
-      await addHistoryLine();
+      historyBrowser.push(`/search=${searchValue}`);
     } catch {
     } finally {
       setLoading(false);
@@ -221,19 +207,23 @@ const Index: React.FC = () => {
       <div style={{ display: "flex", width: "100%" }}>
         {history.length > 0 && (
           <div style={{ width: "50%" }}>
-            <HistoryList
-              dataSource={history}
-              onDelete={onDeleteHistoryLine}
-              onDeleteAll={onDeleteHistory}
-            ></HistoryList>
+            <CoolBox>
+              <HistoryList
+                dataSource={history}
+                onDelete={onDeleteHistoryLine}
+                onDeleteAll={onDeleteHistory}
+              ></HistoryList>
+            </CoolBox>
           </div>
         )}
 
         <div style={{ width: history.length > 0 ? "50%" : "100%" }}>
-          <SugestionComponent
-            dataSource={array}
-            fullWidth={history.length == 0}
-          ></SugestionComponent>
+          <CoolBox>
+            <SugestionComponent
+              dataSource={array}
+              fullWidth={history.length == 0}
+            ></SugestionComponent>
+          </CoolBox>
         </div>
       </div>
     </>

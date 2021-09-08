@@ -1,4 +1,4 @@
-import { Home } from "./lazyRoutes";
+import { Home, SearchResult } from "./lazyRoutes";
 
 export const routes = [
   {
@@ -7,5 +7,12 @@ export const routes = [
     name: "pages.home",
     exact: true,
     Component: Home,
+  },
+  {
+    id: "home",
+    path: "/search=:searchtext",
+    name: "pages.home",
+    exact: true,
+    Component: SearchResult,
   },
 ];
