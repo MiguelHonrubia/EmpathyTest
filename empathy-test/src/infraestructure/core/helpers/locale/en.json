@@ -2,9 +2,16 @@
   "general.search": "Search",
   "general.show-more": "Show more",
   "general.show-less": "Show less",
+  "general.album": "Album",
+  "general.history": "History",
 
   "history.delete-all": "Delete history",
   "history.title": "Search history",
 
-  "sugestions.title": "Sugestions"
+  "sugestions.title": "Sugestions",
+
+  "track.name": "Track",
+  "track.album": "Album",
+  "track.artists": "Artists",
+  "track.duration": "Duration"
 }

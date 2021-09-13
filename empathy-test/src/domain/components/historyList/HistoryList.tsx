@@ -1,6 +1,10 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router";
 import { HistoryType } from "../../../infraestructure/core/models/History";
+import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
+import { StyledSubTitle } from "../title/style";
+import { StyledHistoryListBox, StyledHistoryItem } from "./style";
 
 export const HistoryList: React.FC<{
   dataSource: HistoryType[];
@@ -8,22 +12,19 @@ export const HistoryList: React.FC<{
   onDeleteAll;
 }> = ({ dataSource, onDelete, onDeleteAll }) => {
   const { t } = useTranslation();
+  const historyBrowser = useHistory();
+  const { themeColor } = useRandomTheme();
 
-  const [showAll, setShowAll] = React.useState(false);
+  const onClickSearch = (searchText) => {
+    historyBrowser.push(`/search=${searchText}`);
+  };
 
   return (
-    <div style={{ margin: 24 }}>
-      <div>
-        <h2 style={{ marginLeft: 24 }}>{t("history.title")}</h2>
+    <div style={{ margin: "0px 5rem" }}>
+      <div style={{ width: "100%" }}>
+        <StyledSubTitle color={"white"}>{t("history.title")}</StyledSubTitle>
       </div>
-      <div
-        style={{
-          display: "flex",
-          height: "32rem",
-          overflowY: showAll ? "auto" : "hidden",
-          margin: 24,
-        }}
-      >
+      <StyledHistoryListBox color={themeColor && themeColor.primary}>
         <div style={{ margin: "0 auto" }}>
           {dataSource.map(
             (
@@ -31,16 +32,30 @@ export const HistoryList: React.FC<{
               index
             ) => {
               return (
-                <div key={index}>
-                  <div style={{ display: "flex" }}>
+                <StyledHistoryItem
+                  key={index}
+                  color={themeColor && themeColor.primary}
+                  colorSecondary={themeColor && themeColor.secondary}
+                >
+                  <div
+                    style={{ display: "flex", justifyContent: "space-around" }}
+                  >
                     <div
                       style={{
                         margin: 12,
                         width: "20rem",
                       }}
                     >
-                      {/* todo: re visit  */}
-                      <span style={{ cursor: "pointer" }}>{search}</span>
+                      <span
+                        style={{
+                          cursor: "pointer",
+                          overflowX: "hidden",
+                          textTransform: "capitalize",
+                        }}
+                        onClick={() => onClickSearch(search)}
+                      >
+                        {search}
+                      </span>
                     </div>
                     <div style={{ margin: 12 }}>
                       <i className="material-icons md-18">person</i>
@@ -61,7 +76,6 @@ export const HistoryList: React.FC<{
                         className="material-icons md-18"
                         onClick={async () => {
                           await onDelete(index);
-                          setShowAll(showAll && dataSource.length > 10);
                         }}
                         style={{ cursor: "pointer" }}
                       >
@@ -69,29 +83,12 @@ export const HistoryList: React.FC<{
                       </i>
                     </div>
                   </div>
-                </div>
+                </StyledHistoryItem>
               );
             }
           )}
         </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-        }}
-      >
-        <div style={{ margin: "auto" }}>
-          {dataSource.length > 10 && (
-            <button style={{ margin: 12 }} onClick={() => setShowAll(!showAll)}>
-              {showAll ? t("general.show-less") : t("general.show-more")}
-            </button>
-          )}
-          <button style={{ margin: 12 }} onClick={onDeleteAll}>
-            {t("history.delete-all")}
-          </button>
-        </div>
-      </div>
+      </StyledHistoryListBox>
     </div>
   );
 };

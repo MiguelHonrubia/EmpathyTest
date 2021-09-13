@@ -1,147 +1,40 @@
 import * as React from "react";
 import { useHistory } from "react-router";
 import { HistoryType } from "../../infraestructure/core/models/History";
-import { fetchAccessToken } from "../../infraestructure/data/providers/auth";
-import { fetchSearch } from "../../infraestructure/data/providers/spotify";
-import { Carrousel } from "../components/carrousel/Carrousel";
+import { getNewReleases } from "../../infraestructure/core/services/spotify";
+import { json2array } from "../../infraestructure/core/utils/json-to-array";
+import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
 import { CoolBox } from "../components/coolBox/CoolBox";
+import { LeftHalfScreen } from "../components/halfscreen/HalfScreen";
 import { HistoryList } from "../components/historyList/HistoryList";
 import { SearchComponent } from "../components/SearchComponent/SearchComponent";
 import { SugestionComponent } from "../components/sugestion/SugestionComponent";
-
-function json2array(json) {
-  const result = [];
-  const obj = JSON.parse(json);
-  Object.values(obj).forEach((o) => {
-    result.push(o);
-  });
-
-  return result;
-}
+import { StyledSubTitle, StyledTitle } from "../components/title/style";
 
 const Index: React.FC = () => {
   const [searchValue, setSearchValue] = React.useState("");
+  const [showHistoryLog, setShowHistoryLog] = React.useState(false);
+  const [newReleases, setNewReleases] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const historyBrowser = useHistory();
 
-  const array: HistoryType[] = [
-    {
-      search: "pablo alboran 1",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 2",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 3",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 4",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 5",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 6",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 7",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 8",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 9",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 10",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 11",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 12",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 13",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 14",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 15",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-    {
-      search: "pablo alboran 16",
-      artistResults: 7,
-      albumResults: 9,
-      songResults: 3,
-      date: "06/09/2021",
-    },
-  ];
+  const { themeColor } = useRandomTheme();
+
+  const loadRecommendations = async () => {
+    try {
+      const response = await getNewReleases();
+      setNewReleases(response);
+      console.log("response", response);
+    } catch {}
+  };
+
+  React.useEffect(() => {
+    loadRecommendations();
+  }, []);
 
   const [history, setHistory] = React.useState<HistoryType[]>(
     sessionStorage.getItem("history")
-      ? json2array(sessionStorage.getItem("history"))
+      ? json2array(sessionStorage.getItem("history")).reverse()
       : []
   );
 
@@ -159,6 +52,10 @@ const Index: React.FC = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const onClickHistory = async () => {
+    setShowHistoryLog(!showHistoryLog);
   };
 
   const onDeleteHistoryLine = async (id) => {
@@ -188,44 +85,52 @@ const Index: React.FC = () => {
 
   return (
     <>
-      <div
-        style={{
-          width: "100%",
-          height: "15rem",
-          backgroundColor: "gray",
-          display: "flex",
-          alignItems: "flex-start",
-        }}
-      >
-        <SearchComponent
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          onSubmit={onSubmitSearch}
-          loading={loading}
-        ></SearchComponent>
-      </div>
-      <div style={{ display: "flex", width: "100%" }}>
-        {history.length > 0 && (
-          <div style={{ width: "50%" }}>
-            <CoolBox>
-              <HistoryList
-                dataSource={history}
-                onDelete={onDeleteHistoryLine}
-                onDeleteAll={onDeleteHistory}
-              ></HistoryList>
-            </CoolBox>
+      <LeftHalfScreen>
+        <div
+          style={{
+            width: "100%",
+            height: showHistoryLog ? "55rem" : "25rem",
+          }}
+        >
+          <div>
+            <div
+              style={{
+                textAlign: "center",
+                color: themeColor && themeColor.primary,
+                width: "100%",
+                marginBottom: 50,
+              }}
+            >
+              <StyledTitle
+                style={{ margin: 0 }}
+                color={themeColor && themeColor.primary}
+                colorSecondaru={themeColor && themeColor.secondary}
+              >
+                EMPATHY.CO
+              </StyledTitle>
+            </div>
+            <SearchComponent
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              onSubmit={onSubmitSearch}
+              onClickHistory={onClickHistory}
+              loading={loading}
+              showHistoryButton={history.length > 0}
+            ></SearchComponent>
+            {showHistoryLog && (
+              <div style={{ width: "100%" }}>
+                <CoolBox>
+                  <HistoryList
+                    dataSource={history}
+                    onDelete={onDeleteHistoryLine}
+                    onDeleteAll={onDeleteHistory}
+                  ></HistoryList>
+                </CoolBox>
+              </div>
+            )}
           </div>
-        )}
-
-        <div style={{ width: history.length > 0 ? "50%" : "100%" }}>
-          <CoolBox>
-            <SugestionComponent
-              dataSource={array}
-              fullWidth={history.length == 0}
-            ></SugestionComponent>
-          </CoolBox>
         </div>
-      </div>
+      </LeftHalfScreen>
     </>
   );
 };

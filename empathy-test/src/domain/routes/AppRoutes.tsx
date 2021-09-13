@@ -9,9 +9,13 @@ export const AppRoutes: React.FC = () => {
       const response = await fetchAccessToken({
         grant_type: "client_credentials",
       });
+      console.log("response", response);
 
       sessionStorage.setItem("access_token", response.access_token);
-    } catch {}
+    } catch {
+      console.log("entro en reset");
+      sessionStorage.removeItem("access_token");
+    }
   };
 
   React.useEffect(() => {
