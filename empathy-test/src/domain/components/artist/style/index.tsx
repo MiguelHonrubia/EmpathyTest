@@ -26,6 +26,7 @@ export const StyledArtistCard = styled("div")`
     }
     .img {
       opacity: 0.3;
+      filter: blur(2px);
     }
   }
 `;

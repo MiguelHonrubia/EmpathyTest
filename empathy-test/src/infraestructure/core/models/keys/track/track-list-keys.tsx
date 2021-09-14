@@ -4,26 +4,56 @@ import { formatTime } from "../../../utils/format-time";
 import { Router } from "react-router";
 import { Link } from "react-router-dom";
 import history from "../../../../../domain/routes/history";
+import { useRandomTheme } from "../../../../data/contexts/theme";
+import { StyledLink } from "../../../../../domain/components/datatable/style";
 
-const albumTemplate: React.FC<any> = (params) => {
+const AlbumTemplate: React.FC<any> = (params) => {
+  const { themeColor } = useRandomTheme();
   return (
     <span>
-      {params.artists.map((elem, index) => (
-        <Router history={history} key={index}>
-          <Link to={`/album=${params.album.id}`}>{params.album.name}</Link>
-        </Router>
-      ))}
+      <Router history={history}>
+        <Link
+          to={`/album=${params.album.id}`}
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <StyledLink color={themeColor && themeColor.primary}>
+            {params.album.name}
+          </StyledLink>
+        </Link>
+      </Router>
     </span>
   );
 };
 
-const artistTemplate: React.FC<any> = (params) => {
+const ArtistTemplate: React.FC<any> = (params) => {
+  const { themeColor } = useRandomTheme();
   return (
     <span>
       {params.artists.map((elem, index) => (
         <Router history={history} key={index}>
-          <Link to={`/artist=${params.id}`}>
-            {index > 0 ? `, ${elem.name}` : elem.name}
+          <Link
+            to={`/artist=${params.id}`}
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            {index > 0 ? (
+              <span style={{ color: "white" }}>
+                ,
+                <StyledLink
+                  color={themeColor && themeColor.primary}
+                  style={{ marginLeft: 5 }}
+                >
+                  {elem.name}
+                </StyledLink>
+              </span>
+            ) : (
+              <StyledLink color={themeColor && themeColor.primary}>
+                {elem.name}
+              </StyledLink>
+            )}
           </Link>
         </Router>
       ))}
@@ -43,12 +73,12 @@ export const TRACK_LIST_KEYS: DatatableField[] = [
   {
     key: "album",
     text: "track.album",
-    template: albumTemplate,
+    template: AlbumTemplate,
   },
   {
     key: "artist",
     text: "track.artists",
-    template: artistTemplate,
+    template: ArtistTemplate,
   },
   {
     key: "duration_ms",

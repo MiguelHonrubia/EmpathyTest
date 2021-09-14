@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-const ContainerListProps = {
-  color: String,
-};
-
-export const StyledContainerList = styled("div", ContainerListProps)`
+export const StyledContainerList = styled("div")`
   display: "flex";
   overflow-x: hidden;
   padding-bottom: 20;

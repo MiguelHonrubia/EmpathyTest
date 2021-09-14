@@ -6,6 +6,8 @@
   "general.history": "History",
   "general.artists": "Artists",
   "general.albums": "Albums",
+  "general.tracks": "Tracks",
+  "general.result-text": "Search result",
 
   "history.delete-all": "Delete history",
   "history.title": "Search history",
