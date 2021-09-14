@@ -20,18 +20,6 @@ const Index: React.FC = () => {
 
   const { themeColor } = useRandomTheme();
 
-  const loadRecommendations = async () => {
-    try {
-      const response = await getNewReleases();
-      setNewReleases(response);
-      console.log("response", response);
-    } catch {}
-  };
-
-  React.useEffect(() => {
-    loadRecommendations();
-  }, []);
-
   const [history, setHistory] = React.useState<HistoryType[]>(
     sessionStorage.getItem("history")
       ? json2array(sessionStorage.getItem("history")).reverse()
@@ -47,7 +35,10 @@ const Index: React.FC = () => {
 
   const onSubmitSearch = async (event) => {
     try {
-      historyBrowser.push(`/search=${searchValue}`);
+      if (searchValue && searchValue.trim() != "") {
+        setLoading(true);
+        historyBrowser.push(`/search=${searchValue}`);
+      }
     } catch {
     } finally {
       setLoading(false);

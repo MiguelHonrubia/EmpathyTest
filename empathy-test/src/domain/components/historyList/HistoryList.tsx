@@ -49,28 +49,56 @@ export const HistoryList: React.FC<{
                       style={{
                         margin: 12,
                         width: "20rem",
+                        overflowX: "hidden",
+                        textTransform: "capitalize",
+                        textOverflow: "ellipsis",
                       }}
                     >
-                      <span
-                        style={{
-                          cursor: "pointer",
-                          overflowX: "hidden",
-                          textTransform: "capitalize",
-                        }}
-                      >
-                        {search}
-                      </span>
+                      <span style={{}}>{search}</span>
                     </div>
-                    <div style={{ margin: 12 }}>
-                      <i className="material-icons md-18">person</i>
+                    <div
+                      style={{
+                        margin: 12,
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <i
+                        className="material-icons md-18"
+                        style={{ marginRight: 5 }}
+                      >
+                        person
+                      </i>
                       {compactNumber(artistResults)}
                     </div>
-                    <div style={{ margin: 12 }}>
-                      <i className="material-icons md-18">library_music</i>
+                    <div
+                      style={{
+                        margin: 12,
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <i
+                        className="material-icons md-18"
+                        style={{ marginRight: 5 }}
+                      >
+                        library_music
+                      </i>
                       {compactNumber(albumResults)}
                     </div>
-                    <div style={{ margin: 12 }}>
-                      <i className="material-icons md-18">headphones</i>
+                    <div
+                      style={{
+                        margin: 12,
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <i
+                        className="material-icons md-18"
+                        style={{ marginRight: 5 }}
+                      >
+                        headphones
+                      </i>
 
                       {compactNumber(songResults)}
                     </div>

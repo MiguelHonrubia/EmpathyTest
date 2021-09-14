@@ -8,7 +8,8 @@ import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
 import { fetchSearch } from "../../infraestructure/data/providers/spotify";
 import { AlbumList } from "../components/album/AlbumList";
 import { ArtistList } from "../components/artist/ArtistList";
-import { StyledContainerList } from "../components/containerList.tsx/style";
+import { HomeButton } from "../components/button/HomeButton";
+import { StyledContainerList } from "../components/containerList/style";
 import { CoolBox } from "../components/coolBox/CoolBox";
 import { StyledResultTitle } from "../components/title/style";
 import { TrackList } from "../components/track/TrackList";
@@ -71,6 +72,7 @@ const SearchResult: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: "#424a52" }}>
+      <HomeButton></HomeButton>
       <CoolBox>
         <div
           style={{

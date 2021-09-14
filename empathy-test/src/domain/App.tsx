@@ -6,7 +6,7 @@ import { RandomThemeContextProvider } from "../infraestructure/data/contexts/the
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <RandomThemeContextProvider>
         <Router history={historyBrowser}>
           <main>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledArtistCard = styled("div")`
+  cursor: pointer;
   .textImage {
     text-transform: uppercase;
     color: white;

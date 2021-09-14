@@ -28,8 +28,6 @@ export const SearchComponent: React.FC<{
   const { t } = useTranslation();
   const { themeColor } = useRandomTheme();
 
-  console.log("themeColor", themeColor);
-
   return (
     <div style={{ width: "100%", marginTop: 24 }}>
       <StyledSearchBox>
