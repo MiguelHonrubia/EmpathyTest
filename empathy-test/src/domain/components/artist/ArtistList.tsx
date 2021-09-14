@@ -3,14 +3,16 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 import { AlbumDetailType } from "../../../infraestructure/core/models/Album";
 import { ArtistDetailType } from "../../../infraestructure/core/models/Artist";
+import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
 import { StyledSubTitle } from "../title/style";
-import { StyledArtistCard } from "./style";
+import { StyledArtistCard, StyledArtistCardBox } from "./style";
 
 export const ArtistList: React.FC<{ dataSource: ArtistDetailType[] }> = ({
   dataSource,
 }) => {
   const history = useHistory();
   const { t } = useTranslation();
+  const { themeColor } = useRandomTheme();
 
   const onSelectArtist = async (id) => {
     history.push(`/artist=${id}`);
@@ -24,13 +26,7 @@ export const ArtistList: React.FC<{ dataSource: ArtistDetailType[] }> = ({
         </StyledSubTitle>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          boxShadow:
-            "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
-        }}
-      >
+      <StyledArtistCardBox color={themeColor && themeColor.primary}>
         <React.Suspense fallback={"Loading..."}>
           {dataSource.map((elem, index) => {
             return (
@@ -41,35 +37,37 @@ export const ArtistList: React.FC<{ dataSource: ArtistDetailType[] }> = ({
                 <div style={{ display: "flex" }}>
                   {elem.images.length > 0 ? (
                     <img
-                      style={{ margin: "10px 10px auto" }}
+                      className="img"
+                      style={{
+                        margin: "15px 10px auto",
+                        borderRadius: "50%",
+                      }}
                       src={elem.images[0].url}
                       width={200}
                       height={200}
                     />
                   ) : (
                     <div
+                      className="img"
                       style={{
                         margin: "10px 10px auto",
                         background: "black",
                         width: 200,
                         height: 200,
-
-                        marginTop: 10,
+                        borderRadius: "50%",
+                        marginTop: 15,
                       }}
                     ></div>
                   )}
-                </div>
-
-                <div style={{ display: "flex" }}>
-                  <div style={{ margin: "auto" }}>
-                    <p>{elem.name}</p>
+                  <div className="textImageBox">
+                    <b className="textImage">{elem.name}</b>
                   </div>
                 </div>
               </StyledArtistCard>
             );
           })}
         </React.Suspense>
-      </div>
+      </StyledArtistCardBox>
     </div>
   );
 };

@@ -71,10 +71,7 @@ const SearchResult: React.FC = () => {
       <CoolBox>
         {result && result.tracks && result.artists.items.length > 0 && (
           <div>
-            <StyledContainerList
-              style={{ margin: "0px 24px 24px 24px", paddingBottom: 24 }}
-              color={themeColor && themeColor.primary}
-            >
+            <StyledContainerList color={themeColor && themeColor.primary}>
               <ArtistList dataSource={result ? result.artists.items : []} />
             </StyledContainerList>
           </div>

@@ -2,12 +2,14 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 import { AlbumDetailType } from "../../../infraestructure/core/models/Album";
+import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
 import { StyledSubTitle } from "../title/style";
-import { StyledAlbumCard } from "./style";
+import { StyledAlbumCard, StyledAlbumsCardBox } from "./style";
 
 export const AlbumList: React.FC<{ dataSource: AlbumDetailType[] }> = ({
   dataSource,
 }) => {
+  const { themeColor } = useRandomTheme();
   const history = useHistory();
   const { t } = useTranslation();
 
@@ -23,13 +25,7 @@ export const AlbumList: React.FC<{ dataSource: AlbumDetailType[] }> = ({
             {t("general.albums")}
           </StyledSubTitle>
         </div>
-        <div
-          style={{
-            display: "flex",
-            boxShadow:
-              "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
-          }}
-        >
+        <StyledAlbumsCardBox color={themeColor && themeColor.primary}>
           <React.Suspense fallback={"Loading..."}>
             {dataSource.map((elem, index) => {
               return (
@@ -77,7 +73,7 @@ export const AlbumList: React.FC<{ dataSource: AlbumDetailType[] }> = ({
               );
             })}
           </React.Suspense>
-        </div>
+        </StyledAlbumsCardBox>
       </div>
     </>
   );
