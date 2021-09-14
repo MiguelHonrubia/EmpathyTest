@@ -105,6 +105,7 @@ const Index: React.FC = () => {
                 style={{ margin: 0 }}
                 color={themeColor && themeColor.primary}
                 colorSecondaru={themeColor && themeColor.secondary}
+                text={"EMPATHY.CO"}
               >
                 EMPATHY.CO
               </StyledTitle>

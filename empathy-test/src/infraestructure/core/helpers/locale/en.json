@@ -4,6 +4,8 @@
   "general.show-less": "Show less",
   "general.album": "Album",
   "general.history": "History",
+  "general.artists": "Artists",
+  "general.albums": "Albums",
 
   "history.delete-all": "Delete history",
   "history.title": "Search history",

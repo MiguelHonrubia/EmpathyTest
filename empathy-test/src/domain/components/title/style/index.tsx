@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const titleProps = {
   color: String,
-  content: String,
+  text: String,
 };
 
 export const StyledTitle = styled("h1", titleProps)`
@@ -17,7 +17,7 @@ export const StyledTitle = styled("h1", titleProps)`
     bottom: -80px;
     left: 0;
     display: block;
-    content: "EMPATHY.CO";
+    content: "${({ text }) => `${text}`}";
     transform: scaleY(-1);
     background-image: ${({ color }) =>
       `linear-gradient(0deg, ${color} 0, transparent 75%)`};
@@ -40,12 +40,12 @@ export const StyledSubTitle = styled("h2", titleProps)`
     bottom: -17px;
     left: 0;
     display: block;
-    content: "Search history";
+    content: "${({ text }) => `${text}`}";
     transform: scaleY(-1);
     background-image: ${({ color }) =>
       `linear-gradient(0deg, ${color} 0, transparent 75%)`};
     -webkit-background-clip: text;
     color: transparent;
-    opacity: 0.1;
+    opacity: 0.2;
   }
 `;

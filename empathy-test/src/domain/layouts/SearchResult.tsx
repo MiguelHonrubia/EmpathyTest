@@ -3,9 +3,11 @@ import { useParams } from "react-router";
 import { HistoryType } from "../../infraestructure/core/models/History";
 import { SearchResultType } from "../../infraestructure/core/models/SearchResult";
 import { json2array } from "../../infraestructure/core/utils/json-to-array";
+import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
 import { fetchSearch } from "../../infraestructure/data/providers/spotify";
 import { AlbumList } from "../components/album/AlbumList";
 import { ArtistList } from "../components/artist/ArtistList";
+import { StyledContainerList } from "../components/containerList.tsx/style";
 import { CoolBox } from "../components/coolBox/CoolBox";
 import { TrackList } from "../components/track/TrackList";
 
@@ -13,6 +15,7 @@ const SearchResult: React.FC = () => {
   const { searchtext } = useParams<{ searchtext: string }>();
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState<SearchResultType>(null);
+  const { themeColor } = useRandomTheme();
 
   React.useEffect(() => {
     if (searchtext) {
@@ -63,27 +66,36 @@ const SearchResult: React.FC = () => {
     }
   };
 
-  console.log("result", result);
-
   return (
-    <CoolBox>
-      <div style={{ backgroundColor: "" }}>
-        {/* Artist */}
+    <div style={{ backgroundColor: "#424a52" }}>
+      <CoolBox>
         {result && result.tracks && result.artists.items.length > 0 && (
-          <ArtistList dataSource={result ? result.artists.items : []} />
+          <div>
+            <StyledContainerList
+              style={{ margin: "0px 24px 24px 24px", paddingBottom: 24 }}
+              color={themeColor && themeColor.primary}
+            >
+              <ArtistList dataSource={result ? result.artists.items : []} />
+            </StyledContainerList>
+          </div>
         )}
 
-        {/* Albums */}
         {result && result.tracks && result.albums.items.length > 0 && (
-          <AlbumList dataSource={result ? result.albums.items : []} />
+          <div>
+            <StyledContainerList
+              style={{ margin: "0px 24px 24px 24px", paddingBottom: 24 }}
+              color={themeColor && themeColor.primary}
+            >
+              <AlbumList dataSource={result ? result.albums.items : []} />
+            </StyledContainerList>
+          </div>
         )}
 
-        {/* Tracks */}
         {result && result.tracks && result.tracks.items.length > 0 && (
           <TrackList dataSource={result ? result.tracks.items : []} />
         )}
-      </div>
-    </CoolBox>
+      </CoolBox>
+    </div>
   );
 };
 
