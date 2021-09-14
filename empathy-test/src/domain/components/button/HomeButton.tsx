@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ContainerIconButton, IconButton } from "./style";
+import { StyledHomeButtonContainer, StyledHomeIconButton } from "./style";
 import { useHistory } from "react-router";
 import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
 
@@ -13,14 +13,14 @@ export const HomeButton: React.FC = () => {
   };
   return (
     <>
-      <ContainerIconButton>
-        <IconButton
+      <StyledHomeButtonContainer>
+        <StyledHomeIconButton
           onClick={redirectHome}
           color={themeColor && themeColor.primary}
         >
           <i className="material-icons md-18">home</i>
-        </IconButton>
-      </ContainerIconButton>
+        </StyledHomeIconButton>
+      </StyledHomeButtonContainer>
     </>
   );
 };

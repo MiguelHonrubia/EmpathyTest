@@ -6,6 +6,38 @@ import { Link } from "react-router-dom";
 import history from "../../../../../domain/routes/history";
 import { useRandomTheme } from "../../../../data/contexts/theme";
 import { StyledLink } from "../../../../../domain/components/datatable/style";
+import { useTrackPlayer } from "../../../../data/contexts/trackPlayer";
+
+const TrackTemplate: React.FC<any> = (params) => {
+  const { themeColor } = useRandomTheme();
+  const { setTrack } = useTrackPlayer();
+
+  const onTrackClick = async () => {
+    console.log("params", params);
+    let artists;
+    params.artists.forEach((e, index) => {
+      artists = `${artists ? artists : ""} ${
+        index > 0 ? ", " + e.name : e.name
+      }`;
+    });
+    const image = params.album.images[0].url;
+    setTrack({
+      trackName: params.name,
+      trackArtist: artists,
+      trackImage: image,
+    });
+  };
+
+  return (
+    <StyledLink
+      color={themeColor && themeColor.primary}
+      onClick={onTrackClick}
+      style={{ cursor: "pointer" }}
+    >
+      {params.name}
+    </StyledLink>
+  );
+};
 
 const AlbumTemplate: React.FC<any> = (params) => {
   const { themeColor } = useRandomTheme();
@@ -69,6 +101,7 @@ export const TRACK_LIST_KEYS: DatatableField[] = [
   {
     key: "name",
     text: "track.name",
+    template: TrackTemplate,
   },
   {
     key: "album",

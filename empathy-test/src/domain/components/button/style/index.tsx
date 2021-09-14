@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerIconButton = styled.div`
+export const StyledHomeButtonContainer = styled.div`
   position: fixed;
   top: 1em;
   right: 2em;
@@ -8,7 +8,7 @@ export const ContainerIconButton = styled.div`
   float: right;
 `;
 
-export const IconButton = styled.div`
+export const StyledHomeIconButton = styled.div`
   height: 40px;
   width: 40px;
   border-radius: 50%;
