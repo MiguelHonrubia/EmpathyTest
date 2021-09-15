@@ -1,14 +1,8 @@
-import { url } from "inspector";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { AlbumDetailType } from "../../infraestructure/core/models/Album";
-import { ArtistDetailType } from "../../infraestructure/core/models/Artist";
-import { HistoryType } from "../../infraestructure/core/models/History";
 import { ALBUM_TRACKS_LIST_KEYS } from "../../infraestructure/core/models/keys/track/track-list-keys";
-import { SearchResultType } from "../../infraestructure/core/models/SearchResult";
-import { json2array } from "../../infraestructure/core/utils/json-to-array";
-import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
 import {
   fetchAlbum,
   fetchArtist,

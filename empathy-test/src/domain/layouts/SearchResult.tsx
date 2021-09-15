@@ -57,14 +57,15 @@ const SearchResult: React.FC = () => {
     try {
       setLoading(true);
       const response = await fetchSearch(search);
-      console.log("response", response);
       setResult(response);
 
-      await addHistoryLine(
-        response.artists.total,
-        response.albums.total,
-        response.tracks.total
-      );
+      if (history[history.length - 1].search !== searchtext) {
+        await addHistoryLine(
+          response.artists.total,
+          response.albums.total,
+          response.tracks.total
+        );
+      }
     } catch {
     } finally {
       setLoading(false);
