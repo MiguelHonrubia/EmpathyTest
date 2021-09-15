@@ -1,10 +1,4 @@
-import {
-  Home,
-  SearchResult,
-  ArtistResult,
-  AlbumResult,
-  TrackResult,
-} from "./lazyRoutes";
+import { Home, SearchResult, ArtistResult, AlbumResult } from "./lazyRoutes";
 
 export const routes = [
   {
@@ -15,31 +9,24 @@ export const routes = [
     Component: Home,
   },
   {
-    id: "home",
+    id: "result",
     path: "/search=:searchtext",
     name: "pages.home",
     exact: true,
     Component: SearchResult,
   },
   {
-    id: "home",
+    id: "artist",
     path: "/artist=:searchtext",
     name: "pages.artist",
     exact: true,
     Component: ArtistResult,
   },
   {
-    id: "home",
+    id: "album",
     path: "/album=:searchtext",
     name: "pages.artist",
     exact: true,
     Component: AlbumResult,
-  },
-  {
-    id: "home",
-    path: "/track=:searchtext",
-    name: "pages.artist",
-    exact: true,
-    Component: TrackResult,
   },
 ];

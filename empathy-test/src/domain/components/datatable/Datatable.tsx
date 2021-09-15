@@ -2,24 +2,21 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { DatatableField } from "../../../infraestructure/core/models/Datatable";
 import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
-import { StyledCellText } from "./style";
+import { StyledCellText, StyledTableContainer } from "./style";
 
 export const DataTable: React.FC<{
   headers: DatatableField[];
   dataSource: any[];
-}> = ({ headers, dataSource }) => {
+  maxHeight?: number;
+}> = ({ headers, dataSource, maxHeight }) => {
   const { t } = useTranslation();
   const { themeColor } = useRandomTheme();
 
   return (
-    <div
-      style={{
-        marginBottom: 24,
-        display: "flex",
-        width: "100%",
-        boxShadow:
-          "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
-      }}
+    <StyledTableContainer
+      maxHeight={maxHeight ? `${maxHeight}px` : "auto"}
+      color={themeColor && themeColor.primary}
+      style={{ marginBottom: 24 }}
     >
       <table
         style={{
@@ -88,6 +85,6 @@ export const DataTable: React.FC<{
           })}
         </tbody>
       </table>
-    </div>
+    </StyledTableContainer>
   );
 };

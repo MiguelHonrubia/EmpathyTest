@@ -10,8 +10,7 @@ import { StyledHistoryListBox, StyledHistoryItem } from "./style";
 export const HistoryList: React.FC<{
   dataSource: HistoryType[];
   onDelete;
-  onDeleteAll;
-}> = ({ dataSource, onDelete, onDeleteAll }) => {
+}> = ({ dataSource, onDelete }) => {
   const { t } = useTranslation();
   const historyBrowser = useHistory();
   const { themeColor } = useRandomTheme();
@@ -40,79 +39,85 @@ export const HistoryList: React.FC<{
                   color={themeColor && themeColor.primary}
                   colorSecondary={themeColor && themeColor.secondary}
                   style={{ cursor: "pointer" }}
-                  onClick={() => onClickSearch(search)}
                 >
                   <div
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <div
-                      style={{
-                        margin: 12,
-                        width: "20rem",
-                        overflowX: "hidden",
-                        textTransform: "capitalize",
-                        textOverflow: "ellipsis",
-                      }}
+                      style={{ display: "flex" }}
+                      onClick={() => onClickSearch(search)}
                     >
-                      <span style={{}}>{search}</span>
-                    </div>
-                    <div
-                      style={{
-                        margin: 12,
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <i
-                        className="material-icons md-18"
-                        style={{ marginRight: 5 }}
-                      >
-                        person
-                      </i>
-                      {compactNumber(artistResults)}
-                    </div>
-                    <div
-                      style={{
-                        margin: 12,
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <i
-                        className="material-icons md-18"
-                        style={{ marginRight: 5 }}
-                      >
-                        library_music
-                      </i>
-                      {compactNumber(albumResults)}
-                    </div>
-                    <div
-                      style={{
-                        margin: 12,
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <i
-                        className="material-icons md-18"
-                        style={{ marginRight: 5 }}
-                      >
-                        headphones
-                      </i>
-
-                      {compactNumber(songResults)}
-                    </div>
-                    <div style={{ margin: 12 }}>{date}</div>
-                    <div style={{ margin: 12 }}>
-                      <i
-                        className="material-icons md-18"
-                        onClick={async () => {
-                          await onDelete(index);
+                      <div
+                        style={{
+                          margin: 12,
+                          width: "20rem",
+                          overflowX: "hidden",
+                          textTransform: "capitalize",
+                          textOverflow: "ellipsis",
                         }}
-                        style={{ cursor: "pointer" }}
                       >
-                        clear
-                      </i>
+                        <span>{search}</span>
+                      </div>
+                      <div
+                        style={{
+                          margin: 12,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <i
+                          className="material-icons md-18"
+                          style={{ marginRight: 5 }}
+                        >
+                          person
+                        </i>
+                        {compactNumber(artistResults)}
+                      </div>
+                      <div
+                        style={{
+                          margin: 12,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <i
+                          className="material-icons md-18"
+                          style={{ marginRight: 5 }}
+                        >
+                          library_music
+                        </i>
+                        {compactNumber(albumResults)}
+                      </div>
+                      <div
+                        style={{
+                          margin: 12,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <i
+                          className="material-icons md-18"
+                          style={{ marginRight: 5 }}
+                        >
+                          headphones
+                        </i>
+
+                        {compactNumber(songResults)}
+                      </div>
+                      <div style={{ margin: 12 }}>{date}</div>
+                    </div>
+                    <div>
+                      <div style={{ margin: 12 }}>
+                        <i
+                          className="material-icons md-18"
+                          onClick={async () => {
+                            await onDelete(index);
+                          }}
+                          style={{ cursor: "pointer" }}
+                        >
+                          clear
+                        </i>
+                      </div>
                     </div>
                   </div>
                 </StyledHistoryItem>

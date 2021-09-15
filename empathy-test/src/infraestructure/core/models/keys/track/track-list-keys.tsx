@@ -13,14 +13,13 @@ const TrackTemplate: React.FC<any> = (params) => {
   const { setTrack } = useTrackPlayer();
 
   const onTrackClick = async () => {
-    console.log("params", params);
     let artists;
     params.artists.forEach((e, index) => {
       artists = `${artists ? artists : ""} ${
         index > 0 ? ", " + e.name : e.name
       }`;
     });
-    const image = params.album.images[0].url;
+    const image = params.album && params.album.images[0].url;
     setTrack({
       trackName: params.name,
       trackArtist: artists,
@@ -107,6 +106,24 @@ export const TRACK_LIST_KEYS: DatatableField[] = [
     key: "album",
     text: "track.album",
     template: AlbumTemplate,
+  },
+  {
+    key: "artist",
+    text: "track.artists",
+    template: ArtistTemplate,
+  },
+  {
+    key: "duration_ms",
+    text: "track.duration",
+    template: durationTemplate,
+  },
+];
+
+export const ALBUM_TRACKS_LIST_KEYS: DatatableField[] = [
+  {
+    key: "name",
+    text: "track.name",
+    template: TrackTemplate,
   },
   {
     key: "artist",

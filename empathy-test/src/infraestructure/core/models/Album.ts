@@ -15,4 +15,5 @@ export type AlbumDetailType = {
   total_tracks: number;
   artists: { id: string; name: string }[];
   images: { url: string; height: number; width: number }[];
+  tracks: any;
 };

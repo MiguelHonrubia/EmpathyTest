@@ -8,7 +8,16 @@ export const StyledHomeButtonContainer = styled.div`
   float: right;
 `;
 
+export const StyledBackButtonContainer = styled.div`
+  position: fixed;
+  top: 1em;
+  left: 2em;
+  z-index: 102;
+  float: left;
+`;
+
 export const StyledHomeIconButton = styled.div`
+  color: white;
   height: 40px;
   width: 40px;
   border-radius: 50%;

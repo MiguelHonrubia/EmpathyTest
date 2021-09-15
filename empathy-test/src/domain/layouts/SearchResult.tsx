@@ -2,6 +2,7 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { HistoryType } from "../../infraestructure/core/models/History";
+import { TRACK_LIST_KEYS } from "../../infraestructure/core/models/keys/track/track-list-keys";
 import { SearchResultType } from "../../infraestructure/core/models/SearchResult";
 import { json2array } from "../../infraestructure/core/utils/json-to-array";
 import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
@@ -115,7 +116,11 @@ const SearchResult: React.FC = () => {
 
         {result && result.tracks && result.tracks.items.length > 0 && (
           <StyledContainerList>
-            <TrackList dataSource={result ? result.tracks.items : []} />
+            <TrackList
+              dataSource={result ? result.tracks.items : []}
+              headers={TRACK_LIST_KEYS}
+              title={"general.tracks"}
+            />
           </StyledContainerList>
         )}
       </CoolBox>

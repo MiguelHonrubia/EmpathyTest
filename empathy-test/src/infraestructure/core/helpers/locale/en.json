@@ -8,6 +8,9 @@
   "general.albums": "Albums",
   "general.tracks": "Tracks",
   "general.result-text": "Search result",
+  "general.cover": "Cover",
+  "general.album-tracks": "Album tracks",
+  "general.info": "General information",
 
   "history.delete-all": "Delete history",
   "history.title": "Search history",

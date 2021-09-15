@@ -42,7 +42,8 @@ export const StyledTrackInfo = styled.div`
   margin: auto auto auto 10px;
   color: white;
   font-weight: 400;
-  width: 300;
+  max-width: 200px;
   text-overflow: ellipsis;
   overflow-x: hidden;
+  white-space: nowrap;
 `;
