@@ -27,7 +27,7 @@ export const FullContainer = styled("div", themeProps)`
     rgba(66, 74, 82, 1) 0%,
     rgba(94, 98, 102, 1) 100%
   );
-  background-position: 100% 0%;
+  background-position: 130% 0%;
   background-size: contain;
   background-repeat: no-repeat;
 `;

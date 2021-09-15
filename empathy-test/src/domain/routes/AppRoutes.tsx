@@ -6,11 +6,9 @@ import { routes } from "./routes";
 import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
 
 const themeColorAux = [
-  { primary: "#d0c2db", secondary: "#7a638f" },
-  { primary: "#ec9ea7", secondary: "#a54755" },
+  { primary: "#b43048", secondary: "#711728" },
+  { primary: "#8d6091", secondary: "#4e2f58" },
   { primary: "#04b3de", secondary: "#0580c4" },
-  { primary: "#fbaa35", secondary: "#d98714" },
-  { primary: "#d3e5e9", secondary: "#8f99a2" },
   { primary: "#3dbd75", secondary: "#1a8c44" },
   { primary: "#f3cb50", secondary: "#bb6701" },
 ];
@@ -19,7 +17,7 @@ export const AppRoutes: React.FC = () => {
   const { setThemeColor, setThemeIndex } = useRandomTheme();
 
   const randomizeTheme = () => {
-    const randomIndex = Math.floor(Math.random() * 7);
+    const randomIndex = Math.floor(Math.random() * 5);
 
     setThemeIndex(randomIndex);
     setThemeColor({
