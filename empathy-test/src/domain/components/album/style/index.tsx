@@ -52,3 +52,64 @@ export const StyledAlbumDetailContainer = styled.div`
   height: "100%";
   justify-content: space-around;
 `;
+
+export const StyledLabelAlbumCardContainer = styled.div`
+  margin: 10px;
+`;
+
+export const StyledLabelAlbumCard = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const StyledNoWrapLabel = styled.div`
+  margin: 10px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
+
+export const StyledAlbumListTitleContainer = styled.div`
+  margin: 24px;
+  margin-left: 0px;
+`;
+
+export const StyledAlbumImgCard = styled.img`
+  margin: 10px 10px auto;
+  height: 200px;
+  width: 200px;
+`;
+
+export const StyledAlbumCardContent = styled.div`
+  width: 220px;
+  margin-left: 5px;
+`;
+
+export const StyledAlbumContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: center;
+  height: 100%;
+`;
+
+export const StyledGeneralInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+  color: white;
+`;
+
+export const StyledSeparator = styled.div`
+  height: 50px;
+  width: 1px;
+  background: white;
+`;
+
+export const StyledIconLabel = styled.div`
+  width: 150px;
+  display: flex;
+  justify-content: center;
+`;

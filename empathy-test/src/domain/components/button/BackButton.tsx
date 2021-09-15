@@ -1,10 +1,5 @@
 import * as React from "react";
-
-import {
-  StyledBackButtonContainer,
-  StyledHomeButtonContainer,
-  StyledHomeIconButton,
-} from "./style";
+import { StyledBackButtonContainer, StyledBackButtonBox } from "./style";
 import { useHistory } from "react-router";
 import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
 
@@ -18,13 +13,12 @@ export const BackButton: React.FC = () => {
   return (
     <>
       <StyledBackButtonContainer>
-        <div
+        <StyledBackButtonBox
           onClick={onClickBack}
           color={themeColor && themeColor.primary}
-          style={{ color: "white", cursor: "pointer" }}
         >
           <i className="material-icons md-18">arrow_back</i>
-        </div>
+        </StyledBackButtonBox>
       </StyledBackButtonContainer>
     </>
   );

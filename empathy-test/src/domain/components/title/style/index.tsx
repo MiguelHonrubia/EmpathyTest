@@ -72,3 +72,10 @@ export const StyledResultTitle = styled("h2", titleProps)`
     opacity: 0.2;
   }
 `;
+
+export const StyledPrimaryTitleContainer = styled.div`
+  text-align: center;
+  color: ${({ color }) => color};
+  width: 100%;
+  margin-bottom: 50px;
+`;

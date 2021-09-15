@@ -53,3 +53,40 @@ export const StyledArtistCardBox = styled.div`
     border-radius: 4px;
   }
 `;
+
+export const StyledTitleContainer = styled.div`
+  margin: 24px;
+  margin-left: 0px;
+`;
+
+export const StyledImage = styled.img`
+  margin: 15px 10px auto;
+  border-radius: 50%;
+`;
+
+export const StyledIconLabel = styled.div`
+  width: 200px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const StyledSeparator = styled.div`
+  height: 50px;
+  width: 1px;
+  background: white;
+`;
+
+export const StyledInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+  color: white;
+`;
+
+export const StyledArtistInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+`;

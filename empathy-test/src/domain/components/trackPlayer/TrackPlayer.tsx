@@ -7,6 +7,9 @@ import {
   StyledTrackPlayerContainer,
   StyledTrackPlayerBox,
   StyledTrackInfo,
+  StyledNoDataImage,
+  StyledImage,
+  StyledCloseButtonContainer,
 } from "./style";
 
 export const TrackPlayer: React.FC = () => {
@@ -28,31 +31,12 @@ export const TrackPlayer: React.FC = () => {
                 <i style={{ opacity: 0.5 }}>{trackArtist}</i>
               </StyledTrackInfo>
               {trackImage ? (
-                <img
-                  src={trackImage}
-                  width={50}
-                  height={50}
-                  style={{ margin: "auto 10px auto auto" }}
-                ></img>
+                <StyledImage src={trackImage}></StyledImage>
               ) : (
-                <div
-                  style={{
-                    height: 50,
-                    width: 50,
-                    backgroundColor: "white",
-                    margin: "auto 10px auto auto",
-                  }}
-                ></div>
+                <StyledNoDataImage></StyledNoDataImage>
               )}
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "0px 0px 0px 1px black",
-                }}
-              >
+              <StyledCloseButtonContainer>
                 <i
                   className="material-icons md-18"
                   style={{
@@ -64,7 +48,7 @@ export const TrackPlayer: React.FC = () => {
                 >
                   clear
                 </i>
-              </div>
+              </StyledCloseButtonContainer>
             </StyledTrackContent>
           </StyledTrackPlayerBox>
         </StyledTrackPlayerContainer>

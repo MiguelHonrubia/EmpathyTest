@@ -48,3 +48,21 @@ export const StyledHistoryItem = styled("div", historyListProps)`
   )`};
   }
 `;
+
+export const StyledHistoryItemBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const StyledSearchLabelItem = styled.div`
+  margin: 12px;
+  width: 20rem;
+  overflow-x: hidden;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+`;
+
+export const StyledIconLabel = styled.div`
+  margin: 12px;
+  display: flex;
+`;

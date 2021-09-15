@@ -1,11 +1,15 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
-import { AlbumDetailType } from "../../../infraestructure/core/models/Album";
 import { ArtistDetailType } from "../../../infraestructure/core/models/Artist";
 import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
 import { StyledSubTitle } from "../title/style";
-import { StyledArtistCard, StyledArtistCardBox } from "./style";
+import {
+  StyledArtistCard,
+  StyledArtistCardBox,
+  StyledTitleContainer,
+  StyledImage,
+} from "./style";
 
 export const ArtistList: React.FC<{
   dataSource: ArtistDetailType[];
@@ -33,11 +37,11 @@ export const ArtistList: React.FC<{
   return (
     <div>
       {showTitle && (
-        <div style={{ margin: 24, marginLeft: 0 }}>
+        <StyledTitleContainer>
           <StyledSubTitle color="white" text={t("general.artists")}>
             {t("general.artists")}
           </StyledSubTitle>
-        </div>
+        </StyledTitleContainer>
       )}
 
       <StyledArtistCardBox
@@ -54,12 +58,8 @@ export const ArtistList: React.FC<{
               >
                 <div style={{ display: "flex" }}>
                   {elem.images.length > 0 ? (
-                    <img
+                    <StyledImage
                       className="img"
-                      style={{
-                        margin: "15px 10px auto",
-                        borderRadius: "50%",
-                      }}
                       src={elem.images[0].url}
                       width={avatarWidth ? avatarWidth : 200}
                       height={avatarHeight ? avatarHeight : 200}

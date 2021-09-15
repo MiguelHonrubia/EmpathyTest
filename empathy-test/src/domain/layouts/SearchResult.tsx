@@ -12,7 +12,6 @@ import { ArtistList } from "../components/artist/ArtistList";
 import { HomeButton } from "../components/button/HomeButton";
 import { StyledContainerList } from "../components/containerList/style";
 import { CoolBox } from "../components/coolBox/CoolBox";
-import { FullContainer } from "../components/halfscreen/style/styledComponents";
 import { StyledResultTitle } from "../components/title/style";
 import { TrackList } from "../components/track/TrackList";
 
@@ -59,7 +58,11 @@ const SearchResult: React.FC = () => {
       setLoading(true);
       const response = await fetchSearch(search);
       setResult(response);
-      if (history[history.length - 1].search !== searchtext) {
+
+      if (
+        history.length == 0 ||
+        history[history.length - 1].search !== searchtext
+      ) {
         await addHistoryLine(
           response.artists.total,
           response.albums.total,
@@ -86,7 +89,7 @@ const SearchResult: React.FC = () => {
         <div
           style={{
             display: "flex",
-            margin: "0px 24px 0px 24px",
+            margin: "0px 24px",
             paddingTop: 24,
           }}
         >

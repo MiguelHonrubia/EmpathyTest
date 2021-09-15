@@ -1,15 +1,18 @@
 import * as React from "react";
 import { useHistory } from "react-router";
 import { HistoryType } from "../../infraestructure/core/models/History";
-import { getNewReleases } from "../../infraestructure/core/services/spotify";
 import { json2array } from "../../infraestructure/core/utils/json-to-array";
 import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
 import { CoolBox } from "../components/coolBox/CoolBox";
 import { LeftHalfScreen } from "../components/halfscreen/HalfScreen";
 import { HistoryList } from "../components/historyList/HistoryList";
+import { LanguageBox } from "../components/languageBox/LanguageBox";
 import { SearchComponent } from "../components/SearchComponent/SearchComponent";
-import { SugestionComponent } from "../components/sugestion/SugestionComponent";
-import { StyledSubTitle, StyledTitle } from "../components/title/style";
+
+import {
+  StyledTitle,
+  StyledPrimaryTitleContainer,
+} from "../components/title/style";
 
 const Index: React.FC = () => {
   const [searchValue, setSearchValue] = React.useState("");
@@ -76,6 +79,7 @@ const Index: React.FC = () => {
 
   return (
     <>
+      <LanguageBox></LanguageBox>
       <LeftHalfScreen>
         <div
           style={{
@@ -84,14 +88,7 @@ const Index: React.FC = () => {
           }}
         >
           <div>
-            <div
-              style={{
-                textAlign: "center",
-                color: themeColor && themeColor.primary,
-                width: "100%",
-                marginBottom: 50,
-              }}
-            >
+            <StyledPrimaryTitleContainer>
               <StyledTitle
                 style={{ margin: 0 }}
                 color={themeColor && themeColor.primary}
@@ -100,7 +97,7 @@ const Index: React.FC = () => {
               >
                 EMPATHY.CO
               </StyledTitle>
-            </div>
+            </StyledPrimaryTitleContainer>
             <SearchComponent
               searchValue={searchValue}
               setSearchValue={setSearchValue}
@@ -115,7 +112,6 @@ const Index: React.FC = () => {
                   <HistoryList
                     dataSource={history}
                     onDelete={onDeleteHistoryLine}
-                    onDeleteAll={onDeleteHistory}
                   ></HistoryList>
                 </CoolBox>
               </div>

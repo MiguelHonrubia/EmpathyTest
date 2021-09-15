@@ -2,27 +2,26 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { ArtistDetailType } from "../../infraestructure/core/models/Artist";
-import { HistoryType } from "../../infraestructure/core/models/History";
 import { TRACK_LIST_KEYS } from "../../infraestructure/core/models/keys/track/track-list-keys";
-import { SearchResultType } from "../../infraestructure/core/models/SearchResult";
-import { json2array } from "../../infraestructure/core/utils/json-to-array";
 import { compactNumber } from "../../infraestructure/core/utils/number-parser";
 import { useRandomTheme } from "../../infraestructure/data/contexts/theme";
 import {
   fetchAlbumsByArtistId,
   fetchArtist,
-  fetchSearch,
   fetchTopTracksByArtistId,
 } from "../../infraestructure/data/providers/spotify";
 import { AlbumList } from "../components/album/AlbumList";
-import { ArtistList } from "../components/artist/ArtistList";
-import { StyledArtistCard } from "../components/artist/style";
+import {
+  StyledArtistCard,
+  StyledSeparator,
+  StyledIconLabel,
+  StyledInfoContainer,
+  StyledArtistInfoContainer,
+} from "../components/artist/style";
 import { BackButton } from "../components/button/BackButton";
 import { HomeButton } from "../components/button/HomeButton";
 import { StyledContainerList } from "../components/containerList/style";
 import { CoolBox } from "../components/coolBox/CoolBox";
-import { StyledGlassContainer } from "../components/glassBox/style";
-import { FullContainer } from "../components/halfscreen/style/styledComponents";
 import { StyledSubTitle } from "../components/title/style";
 import { TrackList } from "../components/track/TrackList";
 
@@ -86,13 +85,7 @@ const ArtistResult: React.FC = () => {
       <HomeButton></HomeButton>
       <BackButton></BackButton>
       <CoolBox>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            paddingTop: 30,
-          }}
-        >
+        <StyledArtistInfoContainer>
           <div>
             <div style={{ margin: 24 }}>
               <StyledSubTitle color="white" text={result && result.name}>
@@ -135,23 +128,8 @@ const ArtistResult: React.FC = () => {
                   </div>
                 </StyledArtistCard>
                 <div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-around",
-                      alignItems: "center",
-                      margin: 10,
-                      width: "100%",
-                      color: "white",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 200,
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
+                  <StyledInfoContainer>
+                    <StyledIconLabel>
                       <i
                         className="material-icons md-18"
                         style={{ marginRight: 5 }}
@@ -162,17 +140,9 @@ const ArtistResult: React.FC = () => {
                         {result && compactNumber(result.followers.total)}{" "}
                         {t("general.followers")}
                       </span>
-                    </div>
-                    <div
-                      style={{ height: 50, width: 1, background: "white" }}
-                    ></div>
-                    <div
-                      style={{
-                        width: 200,
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
+                    </StyledIconLabel>
+                    <StyledSeparator></StyledSeparator>
+                    <StyledIconLabel>
                       <i
                         className="material-icons md-18"
                         style={{ marginRight: 5 }}
@@ -182,17 +152,9 @@ const ArtistResult: React.FC = () => {
                       <span>
                         {result && result.popularity} {t("general.popularity")}
                       </span>
-                    </div>
-                    <div
-                      style={{ height: 50, width: 1, background: "white" }}
-                    ></div>
-                    <div
-                      style={{
-                        width: 200,
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
+                    </StyledIconLabel>
+                    <StyledSeparator></StyledSeparator>
+                    <StyledIconLabel>
                       <i
                         className="material-icons md-18"
                         style={{ marginRight: 5 }}
@@ -202,8 +164,8 @@ const ArtistResult: React.FC = () => {
                       <span>
                         {albums && albums.total} {t("general.albums")}
                       </span>
-                    </div>
-                  </div>
+                    </StyledIconLabel>
+                  </StyledInfoContainer>
                 </div>
               </div>
             </div>
@@ -215,7 +177,7 @@ const ArtistResult: React.FC = () => {
               headers={TRACK_LIST_KEYS}
             ></TrackList>
           </div>
-        </div>
+        </StyledArtistInfoContainer>
         <div style={{ paddingBottom: 24 }}>
           <StyledContainerList>
             <AlbumList dataSource={albums ? albums.items : []} />

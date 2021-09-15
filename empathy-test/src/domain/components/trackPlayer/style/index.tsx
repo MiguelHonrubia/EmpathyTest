@@ -47,3 +47,22 @@ export const StyledTrackInfo = styled.div`
   overflow-x: hidden;
   white-space: nowrap;
 `;
+
+export const StyledImage = styled.img`
+  width: 50px;
+  height: 50px;
+  margin: auto 10px auto auto;
+`;
+
+export const StyledNoDataImage = styled.img`
+  width: 50px;
+  height: 50px;
+  margin: auto 10px auto auto;
+  background-color: black;
+`;
+
+export const StyledCloseButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

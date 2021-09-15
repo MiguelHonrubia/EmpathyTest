@@ -5,7 +5,13 @@ import { HistoryType } from "../../../infraestructure/core/models/History";
 import { compactNumber } from "../../../infraestructure/core/utils/number-parser";
 import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
 import { StyledSubTitle } from "../title/style";
-import { StyledHistoryListBox, StyledHistoryItem } from "./style";
+import {
+  StyledHistoryListBox,
+  StyledHistoryItem,
+  StyledHistoryItemBox,
+  StyledSearchLabelItem,
+  StyledIconLabel,
+} from "./style";
 
 export const HistoryList: React.FC<{
   dataSource: HistoryType[];
@@ -40,31 +46,15 @@ export const HistoryList: React.FC<{
                   colorSecondary={themeColor && themeColor.secondary}
                   style={{ cursor: "pointer" }}
                 >
-                  <div
-                    style={{ display: "flex", justifyContent: "space-around" }}
-                  >
+                  <StyledHistoryItemBox>
                     <div
                       style={{ display: "flex" }}
                       onClick={() => onClickSearch(search)}
                     >
-                      <div
-                        style={{
-                          margin: 12,
-                          width: "20rem",
-                          overflowX: "hidden",
-                          textTransform: "capitalize",
-                          textOverflow: "ellipsis",
-                        }}
-                      >
+                      <StyledSearchLabelItem>
                         <span>{search}</span>
-                      </div>
-                      <div
-                        style={{
-                          margin: 12,
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
+                      </StyledSearchLabelItem>
+                      <StyledIconLabel>
                         <i
                           className="material-icons md-18"
                           style={{ marginRight: 5 }}
@@ -72,14 +62,8 @@ export const HistoryList: React.FC<{
                           person
                         </i>
                         {compactNumber(artistResults)}
-                      </div>
-                      <div
-                        style={{
-                          margin: 12,
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
+                      </StyledIconLabel>
+                      <StyledIconLabel>
                         <i
                           className="material-icons md-18"
                           style={{ marginRight: 5 }}
@@ -87,14 +71,8 @@ export const HistoryList: React.FC<{
                           library_music
                         </i>
                         {compactNumber(albumResults)}
-                      </div>
-                      <div
-                        style={{
-                          margin: 12,
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
+                      </StyledIconLabel>
+                      <StyledIconLabel>
                         <i
                           className="material-icons md-18"
                           style={{ marginRight: 5 }}
@@ -103,7 +81,7 @@ export const HistoryList: React.FC<{
                         </i>
 
                         {compactNumber(songResults)}
-                      </div>
+                      </StyledIconLabel>
                       <div style={{ margin: 12 }}>{date}</div>
                     </div>
                     <div>
@@ -119,7 +97,7 @@ export const HistoryList: React.FC<{
                         </i>
                       </div>
                     </div>
-                  </div>
+                  </StyledHistoryItemBox>
                 </StyledHistoryItem>
               );
             }

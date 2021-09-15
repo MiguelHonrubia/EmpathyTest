@@ -2,9 +2,27 @@
   "general.search": "Buscar",
   "general.show-more": "Ver mas",
   "general.show-less": "Ver menos",
+  "general.album": "Album",
+  "general.history": "Historial",
+  "general.artists": "Artistas",
+  "general.albums": "Albumes",
+  "general.tracks": "Canciones",
+  "general.result-text": "Resultados de busqueda",
+  "general.cover": "Caratula",
+  "general.album-tracks": "Canciones del album",
+  "general.info": "Información general",
+  "general.top-tracks": "Canciones más exitosas",
+  "general.followers": "Seguidores",
+  "general.popularity": "Popularidad",
 
   "history.delete-all": "Borrar historial",
   "history.title": "Historial de busqueda",
 
-  "sugestions.title": "Sugerencias"
+  "sugestions.title": "Sugerencias",
+
+  "track.name": "Canción",
+  "track.album": "Album",
+  "track.artists": "Artistas",
+  "track.duration": "Duración",
+  "track.popularity": "Popularidad"
 }

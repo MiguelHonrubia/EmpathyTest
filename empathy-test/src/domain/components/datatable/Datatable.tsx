@@ -2,7 +2,13 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { DatatableField } from "../../../infraestructure/core/models/Datatable";
 import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
-import { StyledCellText, StyledTableContainer } from "./style";
+import {
+  StyledCellText,
+  StyledTableContainer,
+  StyledDataTable,
+  StyledTH,
+  StyledTD,
+} from "./style";
 
 export const DataTable: React.FC<{
   headers: DatatableField[];
@@ -18,17 +24,7 @@ export const DataTable: React.FC<{
       color={themeColor && themeColor.primary}
       style={{ marginBottom: 24 }}
     >
-      <table
-        style={{
-          background: "#424a52",
-          margin: 24,
-          width: "100%",
-          borderCollapse: "collapse",
-          color: "white",
-          boxShadow:
-            " rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
-        }}
-      >
+      <StyledDataTable>
         <thead
           style={{
             backgroundColor: themeColor && themeColor.primary,
@@ -36,16 +32,7 @@ export const DataTable: React.FC<{
         >
           <tr>
             {headers.map(({ key, text, visible, template }, index) => (
-              <th
-                style={{
-                  padding: "15px 15px 15px 10px",
-                  border: "1px solid #373d43",
-                  textAlign: "left",
-                }}
-                key={index}
-              >
-                {t(text)}
-              </th>
+              <StyledTH key={index}>{t(text)}</StyledTH>
             ))}
           </tr>
         </thead>
@@ -57,12 +44,7 @@ export const DataTable: React.FC<{
                   const Temp = template;
                   if (!visible) {
                     return (
-                      <td
-                        key={indexChild}
-                        style={{
-                          border: "1px solid #373d43",
-                        }}
-                      >
+                      <StyledTD key={indexChild}>
                         {Temp ? (
                           <div style={{ marginLeft: 10 }}>
                             <Temp {...row} />
@@ -76,7 +58,7 @@ export const DataTable: React.FC<{
                             {row[key]}
                           </StyledCellText>
                         )}
-                      </td>
+                      </StyledTD>
                     );
                   }
                 })}
@@ -84,7 +66,7 @@ export const DataTable: React.FC<{
             );
           })}
         </tbody>
-      </table>
+      </StyledDataTable>
     </StyledTableContainer>
   );
 };

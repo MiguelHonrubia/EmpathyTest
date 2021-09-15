@@ -10,6 +10,10 @@ import {
 import {
   StyledDetailAlbumCard,
   StyledAlbumDetailContainer,
+  StyledAlbumContainer,
+  StyledGeneralInfoContainer,
+  StyledSeparator,
+  StyledIconLabel,
 } from "../components/album/style";
 import { ArtistList } from "../components/artist/ArtistList";
 import { BackButton } from "../components/button/BackButton";
@@ -63,15 +67,7 @@ const AlbumResult: React.FC = () => {
       <HomeButton></HomeButton>
       <BackButton></BackButton>
       {!loading && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            verticalAlign: "center",
-            height: "100%",
-          }}
-        >
+        <StyledAlbumContainer>
           <CoolBox>
             <StyledAlbumDetailContainer>
               <div
@@ -103,23 +99,8 @@ const AlbumResult: React.FC = () => {
                     {t("general.info")}
                   </StyledSubTitle>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-around",
-                    alignItems: "center",
-                    margin: 10,
-                    width: "100%",
-                    color: "white",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 150,
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
+                <StyledGeneralInfoContainer>
+                  <StyledIconLabel>
                     <i
                       className="material-icons md-18"
                       style={{ marginRight: 5 }}
@@ -127,17 +108,9 @@ const AlbumResult: React.FC = () => {
                       star
                     </i>
                     {result && result.popularity}
-                  </div>
-                  <div
-                    style={{ height: 50, width: 1, background: "white" }}
-                  ></div>
-                  <div
-                    style={{
-                      width: 150,
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
+                  </StyledIconLabel>
+                  <StyledSeparator></StyledSeparator>
+                  <StyledIconLabel>
                     <i
                       className="material-icons md-18"
                       style={{ marginRight: 5 }}
@@ -146,17 +119,9 @@ const AlbumResult: React.FC = () => {
                     </i>
                     {result &&
                       new Date(result.release_date).toLocaleDateString()}
-                  </div>
-                  <div
-                    style={{ height: 50, width: 1, background: "white" }}
-                  ></div>
-                  <div
-                    style={{
-                      width: 150,
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
+                  </StyledIconLabel>
+                  <StyledSeparator></StyledSeparator>
+                  <StyledIconLabel>
                     <i
                       className="material-icons md-18"
                       style={{ marginRight: 5 }}
@@ -164,17 +129,9 @@ const AlbumResult: React.FC = () => {
                       headphones
                     </i>
                     {result && result.total_tracks}
-                  </div>
-                  <div
-                    style={{ height: 50, width: 1, background: "white" }}
-                  ></div>
-                  <div
-                    style={{
-                      width: 150,
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
+                  </StyledIconLabel>
+                  <StyledSeparator></StyledSeparator>
+                  <StyledIconLabel>
                     <i
                       className="material-icons md-18"
                       style={{ marginRight: 5 }}
@@ -182,8 +139,8 @@ const AlbumResult: React.FC = () => {
                       person
                     </i>
                     {result && result.artists.length}
-                  </div>
-                </div>
+                  </StyledIconLabel>
+                </StyledGeneralInfoContainer>
                 <div
                   style={{
                     display: "flex",
@@ -216,7 +173,7 @@ const AlbumResult: React.FC = () => {
               </div>
             </StyledAlbumDetailContainer>
           </CoolBox>
-        </div>
+        </StyledAlbumContainer>
       )}
     </FullContainer>
   );

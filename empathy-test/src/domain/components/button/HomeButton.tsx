@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { StyledHomeButtonContainer, StyledHomeIconButton } from "./style";
 import { useHistory } from "react-router";
 import { useRandomTheme } from "../../../infraestructure/data/contexts/theme";
