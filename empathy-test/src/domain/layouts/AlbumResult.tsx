@@ -202,7 +202,7 @@ const AlbumResult: React.FC = () => {
                       dataSource={artistsAux}
                       hiddenBox={true}
                       showTitle={false}
-                      activeHover={false}
+                      activeHover={artistsAux.length > 1 ? true : false}
                       avatarHeight={artistsAux.length > 1 ? 200 : 450}
                       avatarWidth={artistsAux.length > 1 ? 200 : 450}
                     />
