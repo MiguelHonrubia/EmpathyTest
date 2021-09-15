@@ -9,7 +9,7 @@ import { StyledArtistCard, StyledArtistCardBox } from "./style";
 
 export const ArtistList: React.FC<{
   dataSource: ArtistDetailType[];
-  hiddenBox: boolean;
+  hiddenBox?: boolean;
   showTitle?: boolean;
   avatarHeight?: number;
   avatarWidth?: number;

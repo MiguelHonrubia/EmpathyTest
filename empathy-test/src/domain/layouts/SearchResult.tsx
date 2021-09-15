@@ -12,6 +12,7 @@ import { ArtistList } from "../components/artist/ArtistList";
 import { HomeButton } from "../components/button/HomeButton";
 import { StyledContainerList } from "../components/containerList/style";
 import { CoolBox } from "../components/coolBox/CoolBox";
+import { FullContainer } from "../components/halfscreen/style/styledComponents";
 import { StyledResultTitle } from "../components/title/style";
 import { TrackList } from "../components/track/TrackList";
 
@@ -58,7 +59,6 @@ const SearchResult: React.FC = () => {
       setLoading(true);
       const response = await fetchSearch(search);
       setResult(response);
-
       if (history[history.length - 1].search !== searchtext) {
         await addHistoryLine(
           response.artists.total,
@@ -73,8 +73,15 @@ const SearchResult: React.FC = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#424a52" }}>
+    <div
+      style={{
+        background:
+          "linear-gradient(0deg, rgba(66,74,82,1) 0%, rgba(94,98,102,1) 100%)",
+        height: "100vh",
+      }}
+    >
       <HomeButton></HomeButton>
+
       <CoolBox>
         <div
           style={{
@@ -116,13 +123,15 @@ const SearchResult: React.FC = () => {
         )}
 
         {result && result.tracks && result.tracks.items.length > 0 && (
-          <StyledContainerList>
-            <TrackList
-              dataSource={result ? result.tracks.items : []}
-              headers={TRACK_LIST_KEYS}
-              title={"general.tracks"}
-            />
-          </StyledContainerList>
+          <div style={{ backgroundColor: "#424a52" }}>
+            <StyledContainerList>
+              <TrackList
+                dataSource={result ? result.tracks.items : []}
+                headers={TRACK_LIST_KEYS}
+                title={"general.tracks"}
+              />
+            </StyledContainerList>
+          </div>
         )}
       </CoolBox>
     </div>

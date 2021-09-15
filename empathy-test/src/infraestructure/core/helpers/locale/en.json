@@ -11,6 +11,9 @@
   "general.cover": "Cover",
   "general.album-tracks": "Album tracks",
   "general.info": "General information",
+  "general.top-tracks": "Top tracks",
+  "general.followers": "Followers",
+  "general.popularity": "Popularity",
 
   "history.delete-all": "Delete history",
   "history.title": "Search history",
@@ -20,5 +23,6 @@
   "track.name": "Track",
   "track.album": "Album",
   "track.artists": "Artists",
-  "track.duration": "Duration"
+  "track.duration": "Duration",
+  "track.popularity": "Popularity"
 }

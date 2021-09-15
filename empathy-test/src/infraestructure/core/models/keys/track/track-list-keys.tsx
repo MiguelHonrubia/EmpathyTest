@@ -117,6 +117,10 @@ export const TRACK_LIST_KEYS: DatatableField[] = [
     text: "track.duration",
     template: durationTemplate,
   },
+  {
+    key: "popularity",
+    text: "track.popularity",
+  },
 ];
 
 export const ALBUM_TRACKS_LIST_KEYS: DatatableField[] = [

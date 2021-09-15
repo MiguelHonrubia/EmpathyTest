@@ -25,7 +25,6 @@ export const TrackPlayerContextProvider = ({ children }) => {
   const [trackImage, setTrackImage] = React.useState(null);
 
   const setTrack = async (obj) => {
-    console.log("entroo", obj);
     setTrackName(obj.trackName);
     setTrackArtist(obj.trackArtist);
     setTrackImage(obj.trackImage);
