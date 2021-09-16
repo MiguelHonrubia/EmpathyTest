@@ -21,9 +21,7 @@ export const TrackPlayer: React.FC = () => {
         <StyledTrackPlayerContainer>
           <StyledTrackPlayerBox>
             <StyledTrackIcon color={themeColor && themeColor.primary}>
-              <i className="material-icons md-18" style={{ marginRight: 5 }}>
-                headphones
-              </i>
+              <i className="material-icons md-18">headphones</i>
             </StyledTrackIcon>
             <StyledTrackContent>
               <StyledTrackInfo>
