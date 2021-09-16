@@ -8,6 +8,7 @@ import {
   StyledPrimaryButton,
   StyledSearchInput,
   StyledSecondaryButton,
+  StyledButtonContainer,
 } from "./style";
 
 export const SearchComponent: React.FC<{
@@ -43,13 +44,7 @@ export const SearchComponent: React.FC<{
             ></StyledSearchInput>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: 35,
-            }}
-          >
+          <StyledButtonContainer>
             {showHistoryButton && (
               <div style={{ marginRight: 24 }}>
                 <StyledSecondaryButton
@@ -83,7 +78,7 @@ export const SearchComponent: React.FC<{
                 {t("general.search")}
               </StyledPrimaryButton>
             </div>
-          </div>
+          </StyledButtonContainer>
         </StyledSearchForm>
       </StyledSearchBox>
     </div>

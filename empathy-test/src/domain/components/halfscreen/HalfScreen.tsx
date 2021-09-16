@@ -17,9 +17,8 @@ export const LeftHalfScreen: React.FC = ({ children }) => {
       style={{
         backgroundImage: `url(${backgroundImages[themeIndex]})`,
       }}
-      bgColor={"#424a52"}
     >
-      <LeftSideContainer bgColor="#424a52">{children}</LeftSideContainer>
+      <LeftSideContainer>{children}</LeftSideContainer>
     </FullContainer>
   );
 };

@@ -50,8 +50,20 @@ export const StyledHistoryItem = styled("div", historyListProps)`
 `;
 
 export const StyledHistoryItemBox = styled.div`
-  display: flex;
+  /* display: flex; */
   justify-content: space-around;
+
+  @media only screen and (min-width: 620px) {
+    display: flex;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    display: grid;
+  }
+
+  @media only screen and (min-width: 1800px) {
+    display: flex;
+  }
 `;
 
 export const StyledSearchLabelItem = styled.div`
@@ -65,4 +77,20 @@ export const StyledSearchLabelItem = styled.div`
 export const StyledIconLabel = styled.div`
   margin: 12px;
   display: flex;
+`;
+
+export const StyledHistoryItemBoxContent = styled.div`
+  display: grid;
+
+  @media only screen and (min-width: 920px) {
+    display: flex;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    display: grid;
+  }
+
+  @media only screen and (min-width: 1800px) {
+    display: flex;
+  }
 `;

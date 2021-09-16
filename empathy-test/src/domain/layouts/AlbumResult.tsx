@@ -14,13 +14,14 @@ import {
   StyledGeneralInfoContainer,
   StyledSeparator,
   StyledIconLabel,
+  StyledAlbumCover,
 } from "../components/album/style";
 import { ArtistList } from "../components/artist/ArtistList";
 import { BackButton } from "../components/button/BackButton";
 import { HomeButton } from "../components/button/HomeButton";
 import { StyledContainerList } from "../components/containerList/style";
 import { CoolBox } from "../components/coolBox/CoolBox";
-import { FullContainer } from "../components/halfscreen/style/styledComponents";
+import { FullAlbumContainer } from "../components/halfscreen/style/styledComponents";
 import { StyledSubTitle } from "../components/title/style";
 import { TrackList } from "../components/track/TrackList";
 
@@ -63,7 +64,7 @@ const AlbumResult: React.FC = () => {
   };
 
   return (
-    <FullContainer bgColor={"#424a52"}>
+    <FullAlbumContainer style={{ backgroundColor: "#424a52" }}>
       <HomeButton></HomeButton>
       <BackButton></BackButton>
       {!loading && (
@@ -73,6 +74,7 @@ const AlbumResult: React.FC = () => {
               <div
                 style={{
                   margin: 24,
+                  paddingTop: 10,
                 }}
               >
                 <div style={{ margin: 24, marginLeft: 0 }}>
@@ -83,11 +85,8 @@ const AlbumResult: React.FC = () => {
 
                 <div style={{ display: "flex" }}>
                   <StyledDetailAlbumCard style={{ margin: "auto" }}>
-                    <img
-                      style={{ margin: "10px" }}
+                    <StyledAlbumCover
                       src={result && result.images && result.images[0].url}
-                      width={570}
-                      height={570}
                     />
                   </StyledDetailAlbumCard>
                 </div>
@@ -175,7 +174,7 @@ const AlbumResult: React.FC = () => {
           </CoolBox>
         </StyledAlbumContainer>
       )}
-    </FullContainer>
+    </FullAlbumContainer>
   );
 };
 

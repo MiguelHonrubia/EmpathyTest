@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyledLanguageContainer = styled.div`
   z-index: 200;
   position: fixed;
-  right: 4rem;
-  top: 3rem;
+  right: 1rem;
+  top: 1rem;
   width: 100px;
   height: 50px;
   background-color: white;

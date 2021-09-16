@@ -48,9 +48,12 @@ export const StyledAlbumsCardBox = styled.div`
 `;
 
 export const StyledAlbumDetailContainer = styled.div`
-  display: flex;
   height: "100%";
-  justify-content: space-around;
+
+  @media only screen and (min-width: 1800px) {
+    display: flex;
+    justify-content: space-around;
+  }
 `;
 
 export const StyledLabelAlbumCardContainer = styled.div`
@@ -86,11 +89,13 @@ export const StyledAlbumCardContent = styled.div`
 `;
 
 export const StyledAlbumContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: center;
-  height: 100%;
+  @media only screen and (min-width: 1800px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    height: 100%;
+  }
 `;
 
 export const StyledGeneralInfoContainer = styled.div`
@@ -112,4 +117,15 @@ export const StyledIconLabel = styled.div`
   width: 150px;
   display: flex;
   justify-content: center;
+`;
+
+export const StyledAlbumCover = styled.img`
+  margin: 10px;
+  height: 270px;
+  width: 270px;
+
+  @media only screen and (min-width: 1000px) {
+    height: 570px;
+    width: 570px;
+  }
 `;

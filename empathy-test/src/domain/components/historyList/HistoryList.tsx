@@ -11,6 +11,7 @@ import {
   StyledHistoryItemBox,
   StyledSearchLabelItem,
   StyledIconLabel,
+  StyledHistoryItemBoxContent,
 } from "./style";
 
 export const HistoryList: React.FC<{
@@ -47,8 +48,7 @@ export const HistoryList: React.FC<{
                   style={{ cursor: "pointer" }}
                 >
                   <StyledHistoryItemBox>
-                    <div
-                      style={{ display: "flex" }}
+                    <StyledHistoryItemBoxContent
                       onClick={() => onClickSearch(search)}
                     >
                       <StyledSearchLabelItem>
@@ -83,7 +83,7 @@ export const HistoryList: React.FC<{
                         {compactNumber(songResults)}
                       </StyledIconLabel>
                       <div style={{ margin: 12 }}>{date}</div>
-                    </div>
+                    </StyledHistoryItemBoxContent>
                     <div>
                       <div style={{ margin: 12 }}>
                         <i

@@ -17,7 +17,6 @@ import {
 const Index: React.FC = () => {
   const [searchValue, setSearchValue] = React.useState("");
   const [showHistoryLog, setShowHistoryLog] = React.useState(false);
-  const [newReleases, setNewReleases] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const historyBrowser = useHistory();
 
@@ -79,7 +78,6 @@ const Index: React.FC = () => {
 
   return (
     <>
-      <LanguageBox></LanguageBox>
       <LeftHalfScreen>
         <div
           style={{
@@ -87,6 +85,7 @@ const Index: React.FC = () => {
             height: showHistoryLog ? "55rem" : "25rem",
           }}
         >
+          <LanguageBox></LanguageBox>
           <div>
             <StyledPrimaryTitleContainer>
               <StyledTitle

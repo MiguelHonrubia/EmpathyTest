@@ -51,6 +51,7 @@ export const StyledPrimaryButton = styled("button", searchButtonProps)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
   height: 2.3rem;
   padding: 0 3rem;
   font-family: inherit;
@@ -77,9 +78,27 @@ export const StyledPrimaryButton = styled("button", searchButtonProps)`
   &:focus {
     box-shadow: ${({ hoverColor }) => `0 0 0 3px ${hoverColor}`};
   }
+
+  @media only screen and (min-width: 600px) {
+    margin-top: 0px;
+  }
 `;
 
 export const StyledSearchInput = styled.input`
   height: 2rem;
+  display: grid;
   width: 100%;
+`;
+
+export const StyledButtonContainer = styled.div`
+  justify-content: center;
+  margin-top: 35;
+  display: grid;
+  width: 100%;
+  align-items: center;
+  margin: auto;
+
+  @media only screen and (min-width: 600px) {
+    display: flex;
+  }
 `;

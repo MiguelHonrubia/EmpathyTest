@@ -21,6 +21,15 @@ export const StyledArtistCard = styled("div")`
     margin-right: -210px;
   }
 
+  .imgDetail {
+    width: 300px;
+    height: 300px;
+    @media only screen and (min-width: 600px) {
+      width: 500px;
+      height: 500px;
+    }
+  }
+
   &:hover {
     .textImageBox {
       visibility: ${({ activeHover }) => (activeHover ? "visible" : "hidden")};
@@ -71,22 +80,50 @@ export const StyledIconLabel = styled.div`
 `;
 
 export const StyledSeparator = styled.div`
-  height: 50px;
-  width: 1px;
+  height: 1px;
+  width: 220px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background: white;
+
+  @media only screen and (min-width: 600px) {
+    height: 50px;
+    width: 1px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 `;
 
 export const StyledInfoContainer = styled.div`
-  display: flex;
+  display: grid;
   justify-content: space-around;
   align-items: center;
   margin: 10px;
   width: 100%;
   color: white;
+
+  @media only screen and (min-width: 600px) {
+    display: flex;
+  }
 `;
 
 export const StyledArtistInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
   padding-top: 30px;
+
+  @media only screen and (min-width: 1600px) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+export const StyledArtistInfoContainerBox = styled.div`
+  display: flex;
+
+  @media only screen and (min-width: 400px) and (max-width: 600px) {
+    margin: 0px 4rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    margin: 0px 8rem;
+  }
 `;

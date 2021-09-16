@@ -17,6 +17,7 @@ import {
   StyledIconLabel,
   StyledInfoContainer,
   StyledArtistInfoContainer,
+  StyledArtistInfoContainerBox,
 } from "../components/artist/style";
 import { BackButton } from "../components/button/BackButton";
 import { HomeButton } from "../components/button/HomeButton";
@@ -92,18 +93,13 @@ const ArtistResult: React.FC = () => {
                 {result && result.name}
               </StyledSubTitle>
             </div>
-            <div
-              style={{
-                margin: "0px 8rem",
-                display: "flex",
-              }}
-            >
+            <StyledArtistInfoContainerBox>
               <div>
                 <StyledArtistCard activeHover={false}>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     {result && result.images.length > 0 ? (
                       <img
-                        className="img"
+                        className="imgDetail"
                         style={{
                           margin: "15px 10px auto",
                           borderRadius: "50%",
@@ -168,7 +164,7 @@ const ArtistResult: React.FC = () => {
                   </StyledInfoContainer>
                 </div>
               </div>
-            </div>
+            </StyledArtistInfoContainerBox>
           </div>
           <div style={{ margin: "0px 24px 24px 24px" }}>
             <TrackList

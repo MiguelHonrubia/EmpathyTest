@@ -6,7 +6,6 @@ const titleProps = {
 };
 
 export const StyledTitle = styled("h1", titleProps)`
-  font-size: 6rem;
   position: relative;
   color: ${({ color }) => color};
 
@@ -14,7 +13,7 @@ export const StyledTitle = styled("h1", titleProps)`
     position: absolute;
     z-index: 1;
     right: 0;
-    bottom: -80px;
+    bottom: -28px;
     left: 0;
     display: block;
     content: "${({ text }) => `${text}`}";
@@ -24,6 +23,26 @@ export const StyledTitle = styled("h1", titleProps)`
     -webkit-background-clip: text;
     color: transparent;
     opacity: 0.5;
+
+    @media only screen and (min-width: 400px) {
+      bottom: -54px;
+    }
+
+    @media only screen and (min-width: 600px) {
+      bottom: -80px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    font-size: 2rem;
+  }
+
+  @media only screen and (min-width: 400px) {
+    font-size: 4rem;
+  }
+
+  @media only screen and (min-width: 600px) {
+    font-size: 6rem;
   }
 `;
 
@@ -55,7 +74,6 @@ export const StyledResultTitle = styled("h2", titleProps)`
   position: relative;
   color: ${({ color }) => color};
   text-transform: uppercase;
-
   &::after {
     position: absolute;
     z-index: 1;
@@ -78,4 +96,17 @@ export const StyledPrimaryTitleContainer = styled.div`
   color: ${({ color }) => color};
   width: 100%;
   margin-bottom: 50px;
+`;
+
+export const StyledTitleContainer = styled.div`
+  margin: 0px 24px;
+  padding-top: 24px;
+
+  @media only screen and (max-width: 600px) {
+    display: grid;
+  }
+
+  @media only screen and (min-width: 800px) {
+    display: flex;
+  }
 `;
