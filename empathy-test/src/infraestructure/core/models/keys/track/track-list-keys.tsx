@@ -28,13 +28,29 @@ const TrackTemplate: React.FC<any> = (params) => {
   };
 
   return (
-    <StyledLink
-      color={themeColor && themeColor.primary}
-      onClick={onTrackClick}
-      style={{ cursor: "pointer" }}
+    <div
+      style={{
+        display: "flex",
+        textOverflow: "ellipsis",
+        overflowX: "hidden",
+      }}
     >
-      {params.name}
-    </StyledLink>
+      <div
+        className="material-icons md-18"
+        style={{ marginRight: 5, cursor: "pointer" }}
+        onClick={onTrackClick}
+      >
+        play_circle_filled
+      </div>
+
+      <StyledLink
+        color={themeColor && themeColor.primary}
+        onClick={onTrackClick}
+        style={{ cursor: "pointer" }}
+      >
+        {params.name}
+      </StyledLink>
+    </div>
   );
 };
 
