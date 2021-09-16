@@ -69,109 +69,104 @@ const AlbumResult: React.FC = () => {
       <BackButton></BackButton>
       {!loading && (
         <StyledAlbumContainer>
-          <CoolBox>
-            <StyledAlbumDetailContainer>
+          <StyledAlbumDetailContainer>
+            <div
+              style={{
+                margin: "0px 24px",
+                paddingTop: 20,
+              }}
+            >
+              <div style={{ margin: 24, marginLeft: 0 }}>
+                <StyledSubTitle color="white" text={result && result.name}>
+                  {result && result.name}
+                </StyledSubTitle>
+              </div>
+
+              <div style={{ display: "flex" }}>
+                <StyledDetailAlbumCard style={{ margin: "auto" }}>
+                  <StyledAlbumCover
+                    src={result && result.images && result.images[0].url}
+                  />
+                </StyledDetailAlbumCard>
+              </div>
+            </div>
+
+            <div style={{ margin: 24 }}>
+              <div style={{ margin: 24, marginLeft: 0 }}>
+                <StyledSubTitle color="white" text={t("general.info")}>
+                  {t("general.info")}
+                </StyledSubTitle>
+              </div>
+              <StyledGeneralInfoContainer>
+                <StyledIconLabel>
+                  <i
+                    className="material-icons md-18"
+                    style={{ marginRight: 5 }}
+                  >
+                    star
+                  </i>
+                  {result && result.popularity}
+                </StyledIconLabel>
+                <StyledSeparator></StyledSeparator>
+                <StyledIconLabel>
+                  <i
+                    className="material-icons md-18"
+                    style={{ marginRight: 5 }}
+                  >
+                    event
+                  </i>
+                  {result && new Date(result.release_date).toLocaleDateString()}
+                </StyledIconLabel>
+                <StyledSeparator></StyledSeparator>
+                <StyledIconLabel>
+                  <i
+                    className="material-icons md-18"
+                    style={{ marginRight: 5 }}
+                  >
+                    headphones
+                  </i>
+                  {result && result.total_tracks}
+                </StyledIconLabel>
+                <StyledSeparator></StyledSeparator>
+                <StyledIconLabel>
+                  <i
+                    className="material-icons md-18"
+                    style={{ marginRight: 5 }}
+                  >
+                    person
+                  </i>
+                  {result && result.artists.length}
+                </StyledIconLabel>
+              </StyledGeneralInfoContainer>
               <div
                 style={{
-                  margin: 24,
-                  paddingTop: 10,
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 50,
                 }}
               >
-                <div style={{ margin: 24, marginLeft: 0 }}>
-                  <StyledSubTitle color="white" text={result && result.name}>
-                    {result && result.name}
-                  </StyledSubTitle>
-                </div>
-
-                <div style={{ display: "flex" }}>
-                  <StyledDetailAlbumCard style={{ margin: "auto" }}>
-                    <StyledAlbumCover
-                      src={result && result.images && result.images[0].url}
-                    />
-                  </StyledDetailAlbumCard>
-                </div>
+                <StyledContainerList>
+                  <ArtistList
+                    dataSource={artistsAux}
+                    hiddenBox={true}
+                    showTitle={false}
+                    activeHover={artistsAux.length > 1 ? true : false}
+                    avatarHeight={artistsAux.length > 1 ? 200 : 450}
+                    avatarWidth={artistsAux.length > 1 ? 200 : 450}
+                  />
+                </StyledContainerList>
               </div>
+            </div>
 
-              <div style={{ margin: 24 }}>
-                <div style={{ margin: 24, marginLeft: 0 }}>
-                  <StyledSubTitle color="white" text={t("general.info")}>
-                    {t("general.info")}
-                  </StyledSubTitle>
-                </div>
-                <StyledGeneralInfoContainer>
-                  <StyledIconLabel>
-                    <i
-                      className="material-icons md-18"
-                      style={{ marginRight: 5 }}
-                    >
-                      star
-                    </i>
-                    {result && result.popularity}
-                  </StyledIconLabel>
-                  <StyledSeparator></StyledSeparator>
-                  <StyledIconLabel>
-                    <i
-                      className="material-icons md-18"
-                      style={{ marginRight: 5 }}
-                    >
-                      event
-                    </i>
-                    {result &&
-                      new Date(result.release_date).toLocaleDateString()}
-                  </StyledIconLabel>
-                  <StyledSeparator></StyledSeparator>
-                  <StyledIconLabel>
-                    <i
-                      className="material-icons md-18"
-                      style={{ marginRight: 5 }}
-                    >
-                      headphones
-                    </i>
-                    {result && result.total_tracks}
-                  </StyledIconLabel>
-                  <StyledSeparator></StyledSeparator>
-                  <StyledIconLabel>
-                    <i
-                      className="material-icons md-18"
-                      style={{ marginRight: 5 }}
-                    >
-                      person
-                    </i>
-                    {result && result.artists.length}
-                  </StyledIconLabel>
-                </StyledGeneralInfoContainer>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: 50,
-                  }}
-                >
-                  <StyledContainerList>
-                    <ArtistList
-                      dataSource={artistsAux}
-                      hiddenBox={true}
-                      showTitle={false}
-                      activeHover={artistsAux.length > 1 ? true : false}
-                      avatarHeight={artistsAux.length > 1 ? 200 : 450}
-                      avatarWidth={artistsAux.length > 1 ? 200 : 450}
-                    />
-                  </StyledContainerList>
-                </div>
-              </div>
-
-              <div style={{ margin: 24 }}>
-                <TrackList
-                  dataSource={
-                    result && result.tracks ? result.tracks.items : []
-                  }
-                  headers={ALBUM_TRACKS_LIST_KEYS}
-                  title={"general.album-tracks"}
-                  maxHeight={600}
-                ></TrackList>
-              </div>
-            </StyledAlbumDetailContainer>
-          </CoolBox>
+            <div style={{ margin: "0px 24px" }}>
+              <TrackList
+                dataSource={result && result.tracks ? result.tracks.items : []}
+                headers={ALBUM_TRACKS_LIST_KEYS}
+                title={"general.album-tracks"}
+                maxHeight={600}
+              ></TrackList>
+            </div>
+          </StyledAlbumDetailContainer>
         </StyledAlbumContainer>
       )}
     </FullAlbumContainer>

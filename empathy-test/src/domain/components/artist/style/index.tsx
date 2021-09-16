@@ -116,14 +116,4 @@ export const StyledArtistInfoContainer = styled.div`
   }
 `;
 
-export const StyledArtistInfoContainerBox = styled.div`
-  display: flex;
-
-  @media only screen and (min-width: 400px) and (max-width: 600px) {
-    margin: 0px 4rem;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    margin: 0px 8rem;
-  }
-`;
+export const StyledArtistInfoContainerBox = styled.div``;

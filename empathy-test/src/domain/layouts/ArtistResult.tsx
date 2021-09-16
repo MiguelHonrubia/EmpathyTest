@@ -105,8 +105,6 @@ const ArtistResult: React.FC = () => {
                           borderRadius: "50%",
                         }}
                         src={result.images[0].url}
-                        width={500}
-                        height={500}
                       />
                     ) : (
                       <div

@@ -46,7 +46,7 @@ export const SearchComponent: React.FC<{
 
           <StyledButtonContainer>
             {showHistoryButton && (
-              <div style={{ marginRight: 24 }}>
+              <div>
                 <StyledSecondaryButton
                   color={themeColor && themeColor.primary}
                   hoverColor={themeColor && themeColor.secondary}

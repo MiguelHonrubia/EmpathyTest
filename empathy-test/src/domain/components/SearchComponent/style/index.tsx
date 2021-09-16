@@ -91,14 +91,17 @@ export const StyledSearchInput = styled.input`
 `;
 
 export const StyledButtonContainer = styled.div`
-  justify-content: center;
   margin-top: 35;
-  display: grid;
-  width: 100%;
-  align-items: center;
-  margin: auto;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
 
   @media only screen and (min-width: 600px) {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    div {
+      margin-right: 24px;
+    }
   }
 `;
