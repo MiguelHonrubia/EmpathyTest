@@ -8,7 +8,7 @@ import { useRandomTheme } from "../../../../data/contexts/theme";
 import { StyledLink } from "../../../../../domain/components/datatable/style";
 import { useTrackPlayer } from "../../../../data/contexts/trackPlayer";
 
-const TrackTemplate: React.FC<any> = (params) => {
+export const TrackTemplate: React.FC<any> = (params) => {
   const { themeColor } = useRandomTheme();
   const { setTrack } = useTrackPlayer();
 
@@ -54,7 +54,7 @@ const TrackTemplate: React.FC<any> = (params) => {
   );
 };
 
-const AlbumTemplate: React.FC<any> = (params) => {
+export const AlbumTemplate: React.FC<any> = (params) => {
   const { themeColor } = useRandomTheme();
   return (
     <span>
@@ -74,7 +74,7 @@ const AlbumTemplate: React.FC<any> = (params) => {
   );
 };
 
-const ArtistTemplate: React.FC<any> = (params) => {
+export const ArtistTemplate: React.FC<any> = (params) => {
   const { themeColor } = useRandomTheme();
   return (
     <span>
@@ -108,7 +108,7 @@ const ArtistTemplate: React.FC<any> = (params) => {
   );
 };
 
-const durationTemplate: React.FC<any> = (params) => {
+export const DurationTemplate: React.FC<any> = (params) => {
   return <span>{formatTime(params.duration_ms)}</span>;
 };
 
@@ -131,7 +131,7 @@ export const TRACK_LIST_KEYS: DatatableField[] = [
   {
     key: "duration_ms",
     text: "track.duration",
-    template: durationTemplate,
+    template: DurationTemplate,
   },
   {
     key: "popularity",
@@ -153,6 +153,6 @@ export const ALBUM_TRACKS_LIST_KEYS: DatatableField[] = [
   {
     key: "duration_ms",
     text: "track.duration",
-    template: durationTemplate,
+    template: DurationTemplate,
   },
 ];

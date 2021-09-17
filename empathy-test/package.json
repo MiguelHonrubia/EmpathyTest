@@ -51,8 +51,7 @@
     "build:dev": "rimraf dist && webpack --mode development",
     "build:pro": "rimraf dist && webpack --mode production",
     "build:pre": "rimraf dist && webpack",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest --watchAll"
   },
   "eslintConfig": {
     "extends": [

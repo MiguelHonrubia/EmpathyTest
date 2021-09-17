@@ -13,7 +13,7 @@ export type TrackDetailType = {
   name: string;
   id: string;
   href: string;
-  duration: number;
+  duration_ms: number;
   disc_number: number;
   artists: { id: string; name: string }[];
   album: {
